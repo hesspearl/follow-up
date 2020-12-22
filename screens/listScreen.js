@@ -9,17 +9,17 @@ import {
   Image,
   BackHandler,
 } from "react-native";
-import Card from "../components/customComp/Card";
+import Card from "../components/custom components/Card";
 import BottomSheet from "reanimated-bottom-sheet";
-import DetailsScreen from "./deatilsScreen";
-import ToolTip from "../components/customComp/tooltip";
+import DetailsScreen from "./detailsScreen";
+import ToolTip from "../components/custom components/tooltip";
 import ListIcons from "../components/screen Components/listIcons";
 import Selectable from "../components/screen Components/Selectable";
 import { months } from "../modals/itemsArray";
 import { useSelector } from "react-redux";
-import BSH from "../components/customComp/bottomSheetHeader";
+import BSH from "../components/custom components/bottomSheetHeader";
 import { MyContext } from "../context";
-//import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "react-native-vector-icons/MaterialIcons";
 //import { AdMobBanner } from "expo-ads-admob";
 import { BANNER_AD} from "@env";
 
@@ -218,7 +218,7 @@ const ListScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: 'white',
     //marginTop  : 20,
   },
   fab: {
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
 
-    backgroundColor: colors.fab,
+    backgroundColor: 'black',
   },
 
   iconsContainer: {

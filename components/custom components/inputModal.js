@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import  AntDesign  from "react-native-vector-icons/AntDesign";
 import { useDispatch } from "react-redux";
 import { changeValidation } from "../../store/actions/modalState";
 import { Input } from "react-native-elements";

@@ -1,12 +1,11 @@
-import * as firebase from "firebase"
-import "@firebase/firestore"
-import{API_KEY} from "@env"
+import * as firebase from "firebase";
+//import "@firebase/firestore";
+import{API_KEY} from "@env";
 
 
 
 var firebaseConfig = {
     apiKey:API_KEY ,
-    authDomain: "followup-ca4f2.firebaseapp.com",
     databaseURL: "https://followup-ca4f2.firebaseio.com",
     projectId: "followup-ca4f2",
     storageBucket: "followup-ca4f2.appspot.com",

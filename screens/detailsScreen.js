@@ -1,9 +1,9 @@
 import React, { useRef, useContext } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { useFirestore, isLoaded } from "react-redux-firebase";
-import TitleText from "../components/customComp/titleText";
-import ToolTip from "../components/customComp/tooltip";
-import CircleButton from "../components/customComp/CircleButton";
+import TitleText from "../components/custom components/titleText";
+import ToolTip from "../components/custom components/tooltip";
+import CircleButton from "../components/custom components/CircleButton";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {
   ImportantLabels,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   container: {
     //height: "80%",
     width: "100%",
-    backgroundColor: colors.bottomSheet,
+    backgroundColor: 'white',
     //marginTop: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     // height: "50%",
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    borderBottomColor: "#979797",
     // padding:10
   },
   image: {
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     fontFamily: "Spartan",
     fontSize: 15,
     width: 300,
-    color: colors.editable,
+    color: "#A8A2A2",
     // marginVertical:5,
   },
 

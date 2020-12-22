@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
-import colors from "../../colors"
+
 const titleText= props =>{
 return (
 <Text style={styles.txt}>
@@ -11,7 +11,7 @@ return (
 
 const styles= StyleSheet.create({
     txt:{
-        color:colors.titles,
+        color:'black',
         fontSize:15,
         marginVertical:10,
         fontFamily:"Spartan"

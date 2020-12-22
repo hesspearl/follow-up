@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
-import colors from "../../colors"
+
 
 const Lights= props =>{
 return (
@@ -40,7 +40,7 @@ const styles= StyleSheet.create({
       //  flexDirection: "column",
         borderRadius: 50,
        marginTop:5.,
-        backgroundColor: colors.textBack,
+        backgroundColor: 'white',
 
       
        alignItems: "center",

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
-import * as actions from "../../store/actions/filter";
-import {Loading} from "../../screens/loadingScreen"
+import * as actions from "../store/actions/filter";
+import {Loading} from "./loadingScreen"
 
 const Update = (props) => {
   const [done, setDone] = useState(true)

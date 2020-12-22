@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput, StyleSheet } from 'react-native';
-import { Entypo } from "@expo/vector-icons";
+import Entypo  from "react-native-vector-icons/Entypo";
 import size from "../../size";
 
 const logInput= props =>{

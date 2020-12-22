@@ -3,9 +3,9 @@ import { View, Text, TextInput, StyleSheet,TouchableOpacity} from "react-native"
 import Setting from "../assets/svg/settings.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useFirebase } from "react-redux-firebase";
-import {  AntDesign  } from '@expo/vector-icons';
+import  AntDesign  from 'react-native-vector-icons/AntDesign';
 
-import { InputModal, TextModal } from "../components/customComp/inputModal";
+import { InputModal, TextModal } from "../components/custom components/inputModal";
 
 const settingScreen = (props) => {
 

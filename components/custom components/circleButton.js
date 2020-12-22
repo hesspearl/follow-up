@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import {TouchableOpacity} from "react-native-gesture-handler"
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const circleButton = (props) => {
 

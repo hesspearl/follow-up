@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, StyleSheet, View, Text } from "react-native";
-import colors from "../../colors";
+
 import size from "../../size"
 
 const TextField = (props) => {
@@ -54,7 +54,7 @@ color:"white" }
    
    
     borderWidth: 1,
-    backgroundColor: colors.textBack,
+    backgroundColor: 'white',
  height:73,
   justifyContent:"center"
   },

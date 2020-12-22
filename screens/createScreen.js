@@ -14,12 +14,12 @@ import * as actions from "../store/actions/format";
 import { important, necessary } from "../modals/itemsArray";
 import { useDispatch, useSelector } from "react-redux";
 import SwipeButton from "rn-swipe-button";
-import TextField from "../components/customComp/TextField";
+import TextField from "../components/custom components/TextField";
 import SwitchSelector from "../components/screen Components/SwitchSelector";
 import { init, types, inputReducer } from "../store/reduces/createReducer";
 import ApplicationModal from "../components/screen Components/ApplicationModal";
 import ObservationField from "../components/screen Components/observitionField";
-import DateCalender from "../components/customComp/dateCalender";
+import DateCalender from "../components/custom components/dateCalender";
 import NumberFormat from "@wwdrew/react-native-numeric-textinput";
 import size from "../size";
 
@@ -238,7 +238,7 @@ const CreateScreen = (props) => {
           />
           <SwipeButton
             railFillBackgroundColor="white" //(Optional)npm install redux
-            thumbIconBackgroundColor={colors.icons}
+            thumbIconBackgroundColor='white'
             railBackgroundColor="black" //(Optional)
             width={"90%"}
             titleFontSize={30}
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 
     borderWidth: 1,
-    backgroundColor: colors.textBack,
+    backgroundColor: 'white',
     height: 50,
     width: 200,
     alignItems: "center",

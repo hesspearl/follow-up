@@ -15,16 +15,15 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useFirestore, useFirebase } from "react-redux-firebase";
-import colors from "../colors";
 import * as actions from "../store/actions/format";
 import {
   changeValidation,
   returnValidation,
 } from "../store/actions/modalState";
-import ModalComp from "../components/customComp/Modal";
-import DateCalender from "../components/customComp/dateCalender";
-import Lights from "../components/customComp/lights";
-import { InputModal, TextModal } from "../components/customComp/inputModal";
+import ModalComp from "../components/custom components/Modal";
+import DateCalender from "../components/custom components/dateCalender";
+import Lights from "../components/custom components/lights";
+import { InputModal, TextModal } from "../components/custom components/inputModal";
 import {
   inputReducer,
   INPUTS_VALUES,
@@ -34,10 +33,10 @@ import {
   SPENDS,
   init,
   CHOICES,
-} from "../store/reduces/editReducer";
+} from "../store/reducers/editReducer";
 import moment from "moment";
-import Observation from "../components/screen Components/showMore";
-import { AntDesign } from "@expo/vector-icons";
+import Observation from "../components/screen Components/observationLayout";
+import AntDesign  from "react-native-vector-icons/AntDesign";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import NumberFormat from "@wwdrew/react-native-numeric-textinput";
 import ModalOptions from "../components/custom components/modalOptions";

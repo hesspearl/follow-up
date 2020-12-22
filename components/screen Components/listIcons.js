@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { View, TouchableOpacity, StyleSheet, Text, Modal } from "react-native";
-import Tooltip from "../customComp/tooltip";
+import Tooltip from "../custom components/tooltip";
 import { important, necessary, icons, price } from "../../modals/itemsArray";
 import * as actions from "../../store/actions/filter";
 import { useDispatch  } from "react-redux";

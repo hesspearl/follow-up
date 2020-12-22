@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Wallet from "../assets/svg/wallet.svg";
 import * as actions from "../../store/actions/filter";
-import Start from "../../screens/startScreen";
+import Start from "./startScreen";
 
 import Icon from 'react-native-vector-icons';
 

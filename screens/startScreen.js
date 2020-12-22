@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-//import { FontAwesome5, Fontisto } from "@expo/vector-icons";
-import Icon from 'react-native-vector-icons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import * as actions from "../store/actions/filter";
 import { useDispatch, useSelector } from "react-redux";
 import {
   currentMonth,
   findMonth,
 } from "../components/functional components/LoadingMonth";
+import { Constants } from 'react-native-unimodules';
 
 import Cart from "../assets/svg/cart.svg";
 import BottomSheet from "reanimated-bottom-sheet";
@@ -39,6 +40,9 @@ const startScreen = (props) => {
         });
       }
     }
+
+    //check if there is the fonts we need:
+    console.log(Constants.systemFonts);
 
     // get the firestore cards and compare it what the month the user is
     //using the app so it only return the cards of current month
@@ -72,14 +76,14 @@ dispatch(actions.rawMonths(items));
       <Cart width={size.height<550 ?"250":"300"} height="250" />
       <TouchableOpacity onPress={navigateToCreate}>
         <View style={styles.button}>
-          {/* <FontAwesome5 name="wallet" size={40} color="black" /> */}
-          <Icon name="wallet-plus" size={24} color="black" />
+          <FontAwesome5 name="wallet" size={40} color="black" />
+          {/* <Icon name="wallet-plus" size={24} color="black" /> */}
           <Text style={styles.title}>Buy</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => props.navigation.navigate("list")}>
-      <Icon name="swap-horizontal-circle" size={24} color="black" />
-        {/* <Fontisto name="arrow-swap" size={24} color="black" /> */}
+      {/* <Icon name="swap-horizontal-circle" size={24} color="black" /> */}
+        <Fontisto name="arrow-swap" size={24} color="black" />
       </TouchableOpacity>
 
       <BottomSheet

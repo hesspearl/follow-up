@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Input from "../customComp/logInput";
-import LogButton from "../customComp/logButton";
+import Input from "../custom components/logInput";
+import LogButton from "../custom components/logButton";
 import { useFirebase } from "react-redux-firebase";
 
 export const ResetPass = (props) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import colors from "../../colors";
+
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const listLayout = (props) => {
@@ -12,7 +12,7 @@ const listLayout = (props) => {
         <View
           style={{
             ...styles.container,
-            backgroundColor: selected === index ? "black" : colors.textBack,
+            backgroundColor: selected === index ? "black" : 'white',
             width: width ? width : 100,
           }}
         >

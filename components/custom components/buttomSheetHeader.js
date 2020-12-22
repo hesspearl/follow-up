@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import colors from "../../colors"
+
 
 const bsh = (props) => {
   return (
@@ -14,7 +14,7 @@ const bsh = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: colors.bottomSheet,
+    backgroundColor: white,
     shadowColor: "#000000",
     paddingTop: 20,
     borderTopLeftRadius: 40,
