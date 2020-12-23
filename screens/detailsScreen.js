@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { useFirestore, isLoaded } from "react-redux-firebase";
 import TitleText from "../components/custom components/titleText";
 import ToolTip from "../components/custom components/tooltip";
-import CircleButton from "../components/custom components/CircleButton";
+import CircleButton from "../components/custom components/circleButton";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {
   ImportantLabels,
   NecessaryLabels,
-} from "../components/screen Components/Labels";
+} from "../components/screen Components/labels";
 import { useDispatch, useSelector } from "react-redux";
 import { deletedItem } from "../store/actions/filter";
 

@@ -11,7 +11,7 @@ import LogButton from "../components/custom components/logButton";
 import Input from "../components/custom components/logInput";
 import { ResetPass } from "../components/screen Components/resetPass";
 import Search from "../assets/svg/search.svg";
-import { ANDROID_CLIENT_ID } from "@env";
+//import { ANDROID_CLIENT_ID } from "@env";
 import { useFirebase } from "react-redux-firebase";
 import { useSelector } from "react-redux";
 //import * as Google from "expo-google-app-auth";

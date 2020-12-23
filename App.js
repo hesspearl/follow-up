@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, Text} from 'react-native';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import {Provider} from 'react-redux';
 import {store, rrfProps} from './store/rootReducer';
@@ -11,7 +11,7 @@ const App = () => {
     <Provider store={store}>
       <ReactReduxFirebaseProvider dispatch={store.dispatch} {...rrfProps}>
         <StatusBar barStyle="dark-content" />
-        <AppNan/>
+        <AppNav/>
       </ReactReduxFirebaseProvider>
     </Provider>
   );

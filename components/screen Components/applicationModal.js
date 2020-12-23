@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import ModalComp from "../custom components/Modal"
+import ModalComp from "../custom components/modal"
 
 const DATA="DATA"
 const SHOW ="SHOW"

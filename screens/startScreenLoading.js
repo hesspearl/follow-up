@@ -9,7 +9,7 @@ import {
 } from "react-redux-firebase";
 import { useDispatch, useSelector } from "react-redux";
 import Wallet from "../assets/svg/wallet.svg";
-import * as actions from "../../store/actions/filter";
+import * as actions from "../store/actions/filter";
 import Start from "./startScreen";
 
 import Icon from 'react-native-vector-icons';
@@ -33,7 +33,7 @@ const StartLS = (props) => {
 
 
   // currency API
-  const currency = require("../../modals/country-by-currency-code.json");
+  const currency = require("../modals/country-by-currency-code.json");
   const curCode = currency.filter((item) => item.country === country);
 
   //find user location to get what currency is using 

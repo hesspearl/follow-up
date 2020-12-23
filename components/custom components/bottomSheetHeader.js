@@ -14,7 +14,7 @@ const bsh = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: white,
+    backgroundColor: "white",
     shadowColor: "#000000",
     paddingTop: 20,
     borderTopLeftRadius: 40,

@@ -7,11 +7,11 @@ import * as actions from "../store/actions/filter";
 import {
   currentMonth,
   findMonth,
-} from "../components/functional components/LoadingMonth";
+} from "../components/functional components/loadingMonth";
 import moment from "moment";
 
-import { AdMobInterstitial } from "expo-ads-admob";
-import { AD_INTERSTITIAL} from "@env";
+//import { AdMobInterstitial } from "expo-ads-admob";
+//import { AD_INTERSTITIAL} from "@env";
 
 
 import { position } from "../modals/itemsArray";

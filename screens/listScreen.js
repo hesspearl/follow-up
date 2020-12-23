@@ -9,12 +9,12 @@ import {
   Image,
   BackHandler,
 } from "react-native";
-import Card from "../components/custom components/Card";
+import Card from "../components/custom components/card";
 import BottomSheet from "reanimated-bottom-sheet";
 import DetailsScreen from "./detailsScreen";
 import ToolTip from "../components/custom components/tooltip";
 import ListIcons from "../components/screen Components/listIcons";
-import Selectable from "../components/screen Components/Selectable";
+import Selectable from "../components/screen Components/selectable";
 import { months } from "../modals/itemsArray";
 import { useSelector } from "react-redux";
 import BSH from "../components/custom components/bottomSheetHeader";
@@ -79,7 +79,7 @@ const ListScreen = (props) => {
   const EmptyImage = () => (
     <View style={{ alignItems: "center", paddingTop: 100 }}>
       <Image
-        source={require("../assets/caja.png")}
+        source={require("../assets/img/caja.png")}
         style={{ width: 100, height: 100 }}
       />
       <Text style={{ fontFamily: "SpartanBold", fontSize: 20, color: "black" }}>

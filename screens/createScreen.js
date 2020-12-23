@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect} from "react";
-import { StatusBar } from "expo-status-bar";
+//import { StatusBar } from "expo-status-bar";
 import {
   View,
   StyleSheet,
@@ -9,15 +9,16 @@ import {
   Dimensions,
   SafeAreaView,
   Text,
+  StatusBar
 } from "react-native";
 import * as actions from "../store/actions/format";
 import { important, necessary } from "../modals/itemsArray";
 import { useDispatch, useSelector } from "react-redux";
 import SwipeButton from "rn-swipe-button";
-import TextField from "../components/custom components/TextField";
+import TextField from "../components/custom components/textField";
 import SwitchSelector from "../components/screen Components/SwitchSelector";
-import { init, types, inputReducer } from "../store/reduces/createReducer";
-import ApplicationModal from "../components/screen Components/ApplicationModal";
+import { init, types, inputReducer } from "../store/reducers/createReducer";
+import ApplicationModal from "../components/screen Components/applicationModal";
 import ObservationField from "../components/screen Components/observitionField";
 import DateCalender from "../components/custom components/dateCalender";
 import NumberFormat from "@wwdrew/react-native-numeric-textinput";

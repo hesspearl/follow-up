@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import * as actions from "../../store/actions/filter";
 import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
 import moment from "moment";
-import ListLayout from "../screen Components/listLyout";
+import ListLayout from "../screen Components/listLayout";
 
 const Query = {
   collection:"Cards",

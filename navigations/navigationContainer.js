@@ -11,10 +11,11 @@ const AppNavigation = (props) => {
 
   return (
     <NavigationContainer>
-    {!isLoaded(auth)&& isEmpty(auth)&& <ActivityIndicator/>}
-      {isLoaded(auth) && !isEmpty(auth) &&<ScreenNavigator />  }
+    {!isLoaded(auth)&& isEmpty(auth)&& <ActivityIndicator/>} 
+     {isLoaded(auth) && !isEmpty(auth) &&<ScreenNavigator />  }
+      
 
-      {isLoaded(auth) && isEmpty(auth) &&<LogScreen />}
+      {isLoaded(auth) && isEmpty(auth) &&<LogScreen />} 
     </NavigationContainer>
   );
 };

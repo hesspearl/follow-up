@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   currentMonth,
   findMonth,
-} from "../components/functional components/LoadingMonth";
+} from "../components/functional components/loadingMonth";
 import { Constants } from 'react-native-unimodules';
 
 import Cart from "../assets/svg/cart.svg";
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontFamily: "SpartanBold",
+    fontFamily: "nunito",
   },
   buttonsContain: {
     height: "100%",

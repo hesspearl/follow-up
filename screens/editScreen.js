@@ -1,5 +1,5 @@
 import React, { useReducer, useState, useEffect, useContext } from "react";
-import { StatusBar } from "expo-status-bar";
+//import { StatusBar } from "expo-status-bar";
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  //TouchableOpacity,
+  StatusBar,
   Keyboard,
   Dimensions,
   ImageBackground,
@@ -20,7 +20,7 @@ import {
   changeValidation,
   returnValidation,
 } from "../store/actions/modalState";
-import ModalComp from "../components/custom components/Modal";
+import ModalComp from "../components/custom components/modal";
 import DateCalender from "../components/custom components/dateCalender";
 import Lights from "../components/custom components/lights";
 import { InputModal, TextModal } from "../components/custom components/inputModal";
