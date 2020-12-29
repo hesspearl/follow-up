@@ -15,11 +15,11 @@ import DetailsScreen from "./detailsScreen";
 import ToolTip from "../components/custom components/tooltip";
 import ListIcons from "../components/screen Components/listIcons";
 import Selectable from "../components/screen Components/selectable";
-import { months } from "../modals/itemsArray";
+import {months } from "../modals/itemsArray";
 import { useSelector } from "react-redux";
 import BSH from "../components/custom components/bottomSheetHeader";
 import { MyContext } from "../context";
-import { MaterialIcons } from "react-native-vector-icons/MaterialIcons";
+import MaterialIcons  from "react-native-vector-icons/MaterialIcons";
 //import { AdMobBanner } from "expo-ads-admob";
 import { BANNER_AD} from "@env";
 
@@ -130,16 +130,16 @@ const ListScreen = (props) => {
         data={filter ? filterState.filter.data : filterState.months}
         keyExtractor={(item, index) => index.toString()}
         ListEmptyComponent={<EmptyImage />}
-        ListHeaderComponent={
-          <View style={{flex:1 , alignItems:"center"}}>
-             <AdMobBanner
-                  bannerSize="largeBanner"
-                  adUnitID={BANNER_AD} // Test ID, Replace with your-admob-unit-id
-                  servePersonalizedAds // true or false
-                 // onDidFailToReceiveAdWithError={this.bannerError}
-                />
-          </View>
-       }
+      //   ListHeaderComponent={
+      //     <View style={{flex:1 , alignItems:"center"}}>
+      //        <AdMobBanner
+      //             bannerSize="largeBanner"
+      //             adUnitID={BANNER_AD} // Test ID, Replace with your-admob-unit-id
+      //             servePersonalizedAds // true or false
+      //            onDidFailToReceiveAdWithError={this.bannerError}
+      //           />
+      //     </View>
+      //  }
         renderItem={(itemData) => {
           if(itemData.item.year){
             return( 
@@ -157,12 +157,12 @@ const ListScreen = (props) => {
                     {itemData.item.year}{" "}
                   </Text>
                 </View>
-                <AdMobBanner
+                {/* <AdMobBanner
                   bannerSize="largeBanner"
                   adUnitID={BANNER_AD}// Test ID, Replace with your-admob-unit-id
                   servePersonalizedAds // true or false
                  // onDidFailToReceiveAdWithError={this.bannerError}
-                />
+                /> */}
               </View>
             )
           }

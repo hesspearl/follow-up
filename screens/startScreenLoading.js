@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { View , PermissionsAndroid} from "react-native";
 //import * as Location from "expo-location";
-import Location from '@react-native-community/geolocation';
+import Geolocation from '@react-native-community/geolocation';
+import Geocoder from '@timwangdev/react-native-geocoder';
 import {
   useFirebase,
   useFirestoreConnect,
@@ -16,14 +17,15 @@ import Icon from 'react-native-vector-icons';
 
 // this screen show first after log in
 const StartLS = (props) => {
-  const [country, setCountry] = useState(null);
+ // const [country, setCountry] = useState(null);
+ const [geoLocation, setGeoLocation] = useState(null)
   const auth = useSelector((state) => state.firebase.auth);
   const state = useSelector((state) => state.firebase.profile);
   const filterState = useSelector((state) => state.filter);
   const cards = useSelector(({ fireStore: { ordered } }) => ordered.Cards);
   const firebase = useFirebase();
   const dispatch = useDispatch();
-
+// console.log(geoLocation)
   // sort by timestamp
   useFirestoreConnect({
     collection: `users/${auth.uid}/Cards`,
@@ -31,51 +33,91 @@ const StartLS = (props) => {
     orderBy: "date",
   });
 
+  
 
   // currency API
   const currency = require("../modals/country-by-currency-code.json");
-  const curCode = currency.filter((item) => item.country === country);
+  //const curCode = currency.filter((item) => item.country === country);
 
   //find user location to get what currency is using 
   const location = async () => {
-    let { status } = Location.requestAuthorization();
-    if (status !== "granted") {
-      setErrorMsg("Permission to access location was denied");
+    let granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Location Access Required',
+        message: 'This App needs to Access your location',
+      },
+    );
+    if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+      alert("Permission to access location was denied");
     }
+
     if (state.currency) {
       return;
     }
 
 
 // need to check: https://github.com/react-native-geolocation/react-native-geolocation/tree/1786929f2be581da91082ff857c2393da5e597b3
-    try {
-      let location = await Location.getCurrentPositionAsync({});
-      let country = await Location.reverseGeocodeAsync({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
-      setCountry(country[0].country);
-    } catch (error) {
-      alert(error);
-    }
+    
+      Geolocation.getCurrentPosition( (position) => {
 
-    if (country) {
-      firebase.updateProfile({
-        currency: {
-          code: curCode[0].currency_code,
-          country: curCode[0].country,
-        },
-      });
-    }
-  };
+          
+          // //getting the Longitude from the location json
+          const currentLongitude =position.coords.longitude
+      
+          // //getting the Latitude from the location json
+          const currentLatitude =position.coords.latitude
+
+            setGeoLocation({
+            lat:currentLatitude,
+            lng: currentLongitude
+          })
+        
+      
+
+         }
+         , (error) => alert(error.message), { 
+           enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 
+         }
+       
+         
+  
+      )
+      
+   
+
+  }
+  
+
+  // const findCurrency=async()=>{
+    
+    
+
+  
+  //     const res= await Geocoder.geocodePosition(geoLocation, {fallbackToGoogle:true})
+  //     res is an Array of geocoding object (see below)
+    
+  //     console.log(res)
+    
+  //    setCountry(country[0].country);
+  //   }
+ 
+  //   if (country) {
+  //     firebase.updateProfile({
+  //       currency: {
+  //         code: curCode[0].currency_code,
+  //         country: curCode[0].country,
+  //       },
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     // run location function only first time
     if (!state.currency) {
       location();
     }
-
-
+    
     const unsubscribe = props.navigation.addListener("focus", () => {
       // delete the filtered cards to load them again 
       //so it will always be up to date
@@ -89,7 +131,7 @@ const StartLS = (props) => {
 
   //return the screen when everything loaded
   if (isLoaded(cards) && isLoaded(state))
-    return <Start navigation={props.navigation} />;
+    return <Start navigation={props.navigation} geoLocation={geoLocation}/>;
 
 //shows a loading screen 
   return (

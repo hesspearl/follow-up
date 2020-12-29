@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Modal } from "react-native";
 import { Tooltip } from "react-native-elements";
 
-const tooltips = (props) => {
+const Tooltips = (props) => {
   const { forwardRef, tip, close, size, keys, toggleAction } = props;
 
   
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     // marginVertical:5
   },
 });
-export default tooltips;
+export default Tooltips;

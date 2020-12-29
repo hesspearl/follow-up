@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 
-const bsh = (props) => {
+const Bsh = (props) => {
   return (
     <View style={styles.header}>
       <View style={styles.panelHeader}>
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-export default bsh;
+export default Bsh;

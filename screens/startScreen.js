@@ -1,36 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import React, {useEffect, useCallback} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import * as actions from "../store/actions/filter";
-import { useDispatch, useSelector } from "react-redux";
+import * as actions from '../store/actions/filter';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   currentMonth,
   findMonth,
-} from "../components/functional components/loadingMonth";
-import { Constants } from 'react-native-unimodules';
+} from '../components/functional components/loadingMonth';
+import {Constants} from 'react-native-unimodules';
+import Geocoder from 'react-native-geocoder-reborn';
+import Cart from '../assets/svg/cart.svg';
+import BottomSheet from 'reanimated-bottom-sheet';
+import {useFirebase} from 'react-redux-firebase';
 
-import Cart from "../assets/svg/cart.svg";
-import BottomSheet from "reanimated-bottom-sheet";
-import {
-  useFirebase,
-} from "react-redux-firebase";
-
-import size from "../size";
-
-
+import size from '../size';
 
 const startScreen = (props) => {
-  const { navigation } = props;
+  const {navigation} = props;
   const dispatch = useDispatch();
   const firebase = useFirebase();
   const state = useSelector((state) => state.firebase.profile);
   const filterState = useSelector((state) => state.filter);
-  const cards = useSelector(({ fireStore: { ordered } }) => ordered.Cards);
+  const cards = useSelector(({fireStore: {ordered}}) => ordered.Cards);
   const auth = useSelector((state) => state.firebase.auth);
-  let snapPosition= size.height<550 ? 50:60
+  const firestore = useSelector((state) => state.firestore);
+  let snapPosition = size.height < 550 ? 50 : 100;
 
+  //console.log(firestore);
   useEffect(() => {
     // add a refresh token to profile
     if (!state.refreshToken) {
@@ -41,23 +39,64 @@ const startScreen = (props) => {
       }
     }
 
+  
+
     //check if there is the fonts we need:
-    console.log(Constants.systemFonts);
+  //  console.log(Constants.systemFonts);
 
     // get the firestore cards and compare it what the month the user is
     //using the app so it only return the cards of current month
     if (filterState.loaded) {
       const cm = currentMonth();
-      
+
       const items = findMonth(cards, cm.thisMonth);
-dispatch(actions.selectedMonth(cm.thisMonth))
-dispatch(actions.rawMonths(items));
+      dispatch(actions.selectedMonth(cm.thisMonth));
+      dispatch(actions.rawMonths(items));
       dispatch(actions.filterByMonths(items, cm.current, cm.thisMonth));
     }
-  });
+  } );
+
+  const geoLocation= useCallback(
+    () => {
+      
+        console.log(props.geoLocation)
+       findCurrency(props.geoLocation)
+      
+    },
+    [],
+  )
+ 
+  useEffect(() => {
+    if(props.geoLocation!= null){
+   geoLocation()}
+  }, [])
+
+  const findCurrency=async(geoLocation)=>{
+    
+
+    let lat= 37.421998333333335
+    let lng=-122.084
+  
+    const res= await Geocoder.geocodePosition( {lat , lng })
+    // res is an Array of geocoding object (see below)
+  
+    console.log(res)
+  
+//  //   setCountry(country[0].country);
+//   }
+
+  // if (country) {
+  //   firebase.updateProfile({
+  //     currency: {
+  //       code: curCode[0].currency_code,
+  //       country: curCode[0].country,
+  //     },
+  //   });
+  // }
+};
 
   const navigateToCreate = () => {
-    navigation.navigate("create", { country: state.currency.country });
+    //navigation.navigate('create', {country: state.currency.country});
   };
 
   const logOut = () => {
@@ -66,14 +105,16 @@ dispatch(actions.rawMonths(items));
 
   return (
     <View style={styles.contain}>
- 
-      <Text style={{ fontSize: 25, fontFamily: "Spartan" }}>
-        Welcome Back
-        <Text style={{ fontSize: 25, fontFamily: "SpartanBold" }}>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={{fontSize: 25, fontFamily: 'Spartan', marginRight: 10}}>
+          Welcome Back
+        </Text>
+        <Text style={{fontSize: 25, fontFamily: 'SpartanBold'}}>
           {state.displayName ? state.displayName : state.username} !
         </Text>
-      </Text>
-      <Cart width={size.height<550 ?"250":"300"} height="250" />
+      </View>
+
+      <Cart width={size.height < 550 ? '250' : '300'} height="250" />
       <TouchableOpacity onPress={navigateToCreate}>
         <View style={styles.button}>
           <FontAwesome5 name="wallet" size={40} color="black" />
@@ -81,20 +122,20 @@ dispatch(actions.rawMonths(items));
           <Text style={styles.title}>Buy</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => props.navigation.navigate("list")}>
-      {/* <Icon name="swap-horizontal-circle" size={24} color="black" /> */}
+      <TouchableOpacity onPress={() => props.navigation.navigate('list')}>
+        {/* <Icon name="swap-horizontal-circle" size={24} color="black" /> */}
         <Fontisto name="arrow-swap" size={24} color="black" />
       </TouchableOpacity>
 
       <BottomSheet
-        snapPoints={[snapPosition, 180]}
+        snapPoints={[snapPosition, 200]}
         renderContent={() => {
           return (
             <View style={styles.buttonsContain}>
               <Button
                 name="cog"
                 title="Settings"
-                onPress={() => props.navigation.navigate("setting")}
+                onPress={() => props.navigation.navigate('setting')}
               />
               <Button name="door-open" title="Leave" onPress={() => logOut()} />
             </View>
@@ -103,14 +144,13 @@ dispatch(actions.rawMonths(items));
         renderHeader={() => (
           <View
             style={{
-              backgroundColor: "white",
+              backgroundColor: 'white',
               paddingTop: 10,
               paddingBottom: 20,
               borderTopLeftRadius: 100,
               borderTopRightRadius: 100,
-              alignItems: "center",
-            }}
-          >
+              alignItems: 'center',
+            }}>
             <View style={styles.panelHandle} />
           </View>
         )}
@@ -120,10 +160,10 @@ dispatch(actions.rawMonths(items));
   );
 };
 
-// button component 
+// button component
 
 const Button = (props) => (
-  <TouchableOpacity onPress={props.onPress} style={{ alignItems: "center" }}>
+  <TouchableOpacity onPress={props.onPress} style={{alignItems: 'center'}}>
     <FontAwesome5 name={props.name} size={35} color="black" />
     <Text style={styles.title}>{props.title}</Text>
   </TouchableOpacity>
@@ -133,35 +173,35 @@ const styles = StyleSheet.create({
   contain: {
     width: size.width,
     height: size.height,
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
 
   button: {
-    width:size.width<350 ? 100 :120,
-    height:size.height<550 ?85: 100,
+    width: size.width < 350 ? 100 : 120,
+    height: size.height < 550 ? 85 : 100,
     elevation: 3,
     borderTopLeftRadius: 40,
     borderBottomEndRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 20,
-    fontFamily: "nunito",
+    fontFamily: 'nunito',
   },
   buttonsContain: {
-    height: "100%",
-    backgroundColor: "white",
-    flexDirection: "row",
-    justifyContent: "space-around",
+    height: '100%',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingVertical: 20,
   },
   panelHandle: {
     width: 40,
     height: 5,
     borderRadius: 4,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     marginBottom: 10,
   },
 });

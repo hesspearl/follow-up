@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import "@firebase/firestore";
+
 import{API_KEY} from "@env";
 
 
@@ -15,7 +15,7 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.firestore()
+  firebase.firestore().settings({ experimentalForceLongPolling: true });
   firebase.auth()
 
   export default firebase

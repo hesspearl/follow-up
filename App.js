@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <ReactReduxFirebaseProvider dispatch={store.dispatch} {...rrfProps}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar  />
         <AppNav/>
       </ReactReduxFirebaseProvider>
     </Provider>

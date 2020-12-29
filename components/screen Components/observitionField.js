@@ -10,7 +10,7 @@ import {
 const ObservationField = (props) => {
   const [show, setShow] = useState(false);
 
-  console.log(props.value)
+  //console.log(props.value)
 
   const onSubmit = (value) => {
     if (value.trim().length >= 0) {

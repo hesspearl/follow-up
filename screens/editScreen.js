@@ -56,7 +56,7 @@ const EditScreen = (props) => {
   const [stateInputs, dispatchInputs] = useReducer(inputReducer, init(dataId));
 
   //const date= firebase.firestore.Timestamp.fromDate)
-  console.log(stateInputs.inputValues.important);
+  //console.log(stateInputs.inputValues.important);
   useEffect(() => {
     dispatch(actions.edit(stateInputs.inputValues));
   }, [stateInputs.inputValues]);

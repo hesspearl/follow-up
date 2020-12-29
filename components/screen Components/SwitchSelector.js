@@ -9,7 +9,7 @@ const switchSelector = (props) => {
     { label: props.option[2], value: { value:  props.option[2], color: "red" } },
   ];
 
-  console.log(props.init)
+  //console.log(props.init)
 
   return (
     <View style={{alignItems:"center"}}>
