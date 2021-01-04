@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Fontisto from 'react-native-vector-icons/Fontisto';
@@ -10,7 +10,7 @@ import {
   findMonth,
 } from '../components/functional components/loadingMonth';
 import {Constants} from 'react-native-unimodules';
-import Geocoder from 'react-native-geocoder-reborn';
+import geocoder from '@timwangdev/react-native-geocoder';
 import Cart from '../assets/svg/cart.svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import {useFirebase} from 'react-redux-firebase';
@@ -18,15 +18,17 @@ import {useFirebase} from 'react-redux-firebase';
 import size from '../size';
 
 const startScreen = (props) => {
-  const {navigation} = props;
+  const {navigation, geoLocation} = props;
   const dispatch = useDispatch();
   const firebase = useFirebase();
+  const [country, setCountry] = useState('');
   const state = useSelector((state) => state.firebase.profile);
   const filterState = useSelector((state) => state.filter);
   const cards = useSelector(({fireStore: {ordered}}) => ordered.Cards);
   const auth = useSelector((state) => state.firebase.auth);
   const firestore = useSelector((state) => state.firestore);
   let snapPosition = size.height < 550 ? 50 : 100;
+
 
   //console.log(firestore);
   useEffect(() => {
@@ -55,48 +57,11 @@ const startScreen = (props) => {
       dispatch(actions.filterByMonths(items, cm.current, cm.thisMonth));
     }
   } );
-
-  const geoLocation= useCallback(
-    () => {
-      
-        console.log(props.geoLocation)
-       findCurrency(props.geoLocation)
-      
-    },
-    [],
-  )
- 
-  useEffect(() => {
-    if(props.geoLocation!= null){
-   geoLocation()}
-  }, [])
-
-  const findCurrency=async(geoLocation)=>{
-    
-
-    let lat= 37.421998333333335
-    let lng=-122.084
   
-    const res= await Geocoder.geocodePosition( {lat , lng })
-    // res is an Array of geocoding object (see below)
-  
-    console.log(res)
-  
-//  //   setCountry(country[0].country);
-//   }
 
-  // if (country) {
-  //   firebase.updateProfile({
-  //     currency: {
-  //       code: curCode[0].currency_code,
-  //       country: curCode[0].country,
-  //     },
-  //   });
-  // }
-};
 
   const navigateToCreate = () => {
-    //navigation.navigate('create', {country: state.currency.country});
+    navigation.navigate('create', {country: state.currency.country});
   };
 
   const logOut = () => {
