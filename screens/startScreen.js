@@ -21,7 +21,7 @@ const startScreen = (props) => {
   const {navigation, geoLocation} = props;
   const dispatch = useDispatch();
   const firebase = useFirebase();
-  const [country, setCountry] = useState('');
+
   const state = useSelector((state) => state.firebase.profile);
   const filterState = useSelector((state) => state.filter);
   const cards = useSelector(({fireStore: {ordered}}) => ordered.Cards);

@@ -15,19 +15,21 @@ const Update = (props) => {
 
   const dispatch = useDispatch();
   const cards = useSelector(({ fireStore: { ordered } }) => ordered.Cards);
-  const state = useSelector((state) => state.filter.months);
+  const state = useSelector((state) => state.filter);
 
  
   useEffect(() => {
     //  get card with same id
     let newData = cards.filter((i) => i.id === id);
-    const replace = state.months.findIndex((i) => i.id === newData[0].id);
+    const replace = state.months.findIndex((i) =>i.id === newData[0].id)
+ 
     state[replace] = newData[0];
+
 
     //
     dispatch(actions.deleteFilter());
 
-    if (done=== false &&  !! state.currentMonth.position) {
+    if (done=== false &&  state.currentMonth.position.toString().length>0) {
 
       setDone(null)
       props.navigation.navigate("list");

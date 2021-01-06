@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons';
 // this screen show first after log in
 const StartLS = (props) => {
   //const [country, setCountry] = useState(null);
-  const [geoLocation, setGeoLocation] = useState({})
+  const [geoLocation, setGeoLocation] = useState({}) 
   const auth = useSelector((state) => state.firebase.auth);
   const state = useSelector((state) => state.firebase.profile);
   const filterState = useSelector((state) => state.filter);
@@ -54,6 +54,7 @@ const StartLS = (props) => {
   // }
 
    const findCurrency=()=>{
+
     
       const countryCurrency=RNLocalize.getCurrencies()
       const country_coding = RNLocalize.getCountry()
@@ -81,9 +82,11 @@ const StartLS = (props) => {
 
   useEffect(() => {
     // run location function only once
-    if (!state.currency) {
-      findCurrency();
-    }
+if ( isLoaded(state)&&!state.currency){
+ findCurrency();
+}
+     
+   
     
     const unsubscribe = props.navigation.addListener("focus", () => {
       // delete the filtered cards to load them again 

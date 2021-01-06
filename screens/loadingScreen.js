@@ -21,8 +21,7 @@ export const Loading = (props) => {
   const cards = useSelector(({ fireStore: { ordered } }) => ordered.Cards);
 
 
-  const selectCurrentMonth= useCallback(
-    () => {
+  const selectCurrentMonth= useCallback(() => {
      // const cm = currentMonth();
 
      const p=position[props.month] 
@@ -31,11 +30,8 @@ export const Loading = (props) => {
       dispatch(actions.rawMonths(items));
       dispatch(actions.filterByMonths(items, p, props.month));
       props.setDone(false);
-
-  }
-   ,[props.done]
-  )
-  //console.log(props.done)
+  },[props.done])
+ // console.log(props.done)
  
 
   useEffect(() => {
@@ -60,7 +56,7 @@ const LoadingScreen = (props) => {
   const { uid } = useSelector((state) => state.firebase.auth);
   const filterState = useSelector((state) => state.filter);
   
-  console.log(done)
+  //console.log(done)
 
   const ads = async () => {
     await AdMobInterstitial.setAdUnitID(
@@ -88,17 +84,14 @@ const LoadingScreen = (props) => {
       });
   };
 
+  //console.log(done === false && filterState.currentMonth.position.toString().length>0)
+
   useEffect(() => {
+     if (done === false &&  !filterState.currentMonth.position.toString().length>0) {
+       setDone(true)
+     }
 
-    
-    if (done === false &&  ! filterState.currentMonth.position) {
-      
-      setDone(true)
- 
-    }
-
-     if (done=== false &&  !! filterState.currentMonth.position) {
-      
+    if (done === false && filterState.currentMonth.position.toString().length>0) {
       setDone(null)
       props.navigation.navigate("list");
     }
@@ -108,8 +101,6 @@ const LoadingScreen = (props) => {
 
     return unsubscribe
   }, [data, firestore, done]);
-
-
 
   return <Loading done={done} setDone={setDone} month={filterState.selectedMonth}/>;
 };
