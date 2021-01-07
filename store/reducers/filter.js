@@ -33,12 +33,9 @@ export default filter = (state = initialState, action) => {
       while (i < values.length) {
         if (year(0) !== year(i) && year(i) != y) {
           y = year(i);
-
           values.splice(i, 0, { year: y });
-
           i++;
         }
-
         i++;
       }
 
@@ -94,6 +91,7 @@ export default filter = (state = initialState, action) => {
 
     case DELETED_ITEMS:
       let item = state.months.map((i) => i.id).indexOf(action.value);
+      let itemReverse = state.rawMonths.map((i) => i.id).indexOf(action.value);
       if (state.filter.data) {
         let FItem = state.filter.data.map((i) => i.id).indexOf(action.value);
 
@@ -101,6 +99,7 @@ export default filter = (state = initialState, action) => {
       }
 
       state.months.splice(item, 1);
+      state.rawMonths.splice(itemReverse, 1);
 
       return { ...state };
   }

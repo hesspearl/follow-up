@@ -106,10 +106,10 @@ const DetailsScreen = (props) => {
           </View>
 
           <View style={{ flexDirection: "column", width: "40%" }}>
-            <View>
+            {/* <View>
               <TitleText title="Attachment" />
               <Text style={styles.note}>add an attachment </Text>
-            </View>
+            </View> */}
 
             <View style={{ marginBottom: 20 }}>
               <TitleText title="Observation" />
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "Spartan",
-    fontSize: 10,
+    fontSize: 15,
     // marginVertical:5
   },
   imageContainer: {
