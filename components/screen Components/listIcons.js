@@ -5,7 +5,7 @@ import { important, necessary, icons, price } from "../../modals/itemsArray";
 import * as actions from "../../store/actions/filter";
 import { useDispatch  } from "react-redux";
 import {MyContext} from "../../context"
-import size from "../../size"
+import size from "../../styles/size"
 
 const ListIcons = (props) => {
   const { filterItem, refScroll, showToast, positionX } = props;

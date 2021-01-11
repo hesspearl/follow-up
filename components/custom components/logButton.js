@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import size from "../../size";
+import size from "../../styles/size";
 
 const logButton = (props) => {
   return (

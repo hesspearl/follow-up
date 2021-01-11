@@ -22,7 +22,7 @@ import ApplicationModal from "../components/screen Components/applicationModal";
 import ObservationField from "../components/screen Components/observitionField";
 import DateCalender from "../components/custom components/dateCalender";
 import NumberFormat from "@wwdrew/react-native-numeric-textinput";
-import size from "../size";
+import size from "../styles/size";
 
 const CreateScreen = (props) => {
   const [stateInput, dispatchInput] = useReducer(inputReducer, init);

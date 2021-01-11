@@ -14,9 +14,7 @@ import Search from "../assets/svg/search.svg";
 //import { ANDROID_CLIENT_ID } from "@env";
 import { useFirebase } from "react-redux-firebase";
 import { useSelector } from "react-redux";
-//import * as Google from "expo-google-app-auth";
-
-
+import { GoogleSignin, statusCodes } from '@react-native-community/google-signin';
 
 
 // first screen show , have log in / sign up components
@@ -108,25 +106,40 @@ const Login = (props) => {
   const google = async () => {
     setLoading(true);
     try {
-      const { accessToken, idToken, type } = await Google.logInAsync({
-        androidClientId: ANDROID_CLIENT_ID,
-        scopes: ["profile", "email"],
-      });
+      // const { accessToken, idToken, type } = await Google.logInAsync({
+      //   androidClientId: ANDROID_CLIENT_ID,
+      //   scopes: ["profile", "email"],
+      // });
+      GoogleSignin.configure({
+        forceCodeForRefreshToken: true
+      })
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+     console.log(userInfo)
 
-      if (type === "success") {
-        setLoading(false);
+      // if (type === "success") {
+      //   setLoading(false);
 
-        firebase.login({
-          credential: firebase.auth.GoogleAuthProvider.credential(
-            idToken,
-            accessToken
-          ),
-        });
+      //   firebase.login({
+      //     credential: firebase.auth.GoogleAuthProvider.credential(
+      //       idToken,
+      //       accessToken
+      //     ),
+      //   });
+      // }
+      //  else {
+      //   return { cancelled: true };
+      // }
+    } catch  (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
       } else {
-        return { cancelled: true };
+        // some other error happened
       }
-    } catch (e) {
-      console.log(e);
     }
   };
 
@@ -176,39 +189,7 @@ const Login = (props) => {
     </View>
   );
 };
-
-
-// sign in component 
-const SignIn = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [username, setUsername] = useState("");
-
-  const firebase = useFirebase();
-
-  const sign = () => {
-    //test validation
-    const regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-    if (!password || !email || !username || !confirmPassword) {
-      alert("please don't let field empty");
-      return;
-    }
-
-    if (!regEmail.test(email.toLowerCase())) {
-      alert("not valid email");
-      return;
-    }
-
-    if (confirmPassword != password) {
-      alert("password not matching");
-      return;
-    } else {
-      props.show(false);
-      firebase.createUser(
-        { email, password },
-        { displayName: username, email }
+SearchSearch
       );
     }
   };

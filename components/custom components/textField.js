@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput, StyleSheet, View, Text } from "react-native";
 
-import size from "../../size"
+import size from "../../styles/size"
 
 const TextField = (props) => {
   

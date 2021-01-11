@@ -5,6 +5,7 @@ import {firebaseReducer} from 'react-redux-firebase';
 import filter from './reducers/filter';
 import modalState from './reducers/modalsState';
 import Format from './reducers/format';
+import theme from "./reducers/themes"
 
 const rrfConfig = {
   userProfile: 'users',
@@ -15,6 +16,7 @@ const rrfConfig = {
 const rootReducers = combineReducers({
   format: Format,
   filter: filter,
+  theme:theme,
   modal: modalState,
   fireStore: firestoreReducer,
   firebase: firebaseReducer,

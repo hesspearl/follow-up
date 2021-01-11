@@ -15,7 +15,7 @@ import Cart from '../assets/svg/cart.svg';
 import BottomSheet from 'reanimated-bottom-sheet';
 import {useFirebase} from 'react-redux-firebase';
 
-import size from '../size';
+import size from '../styles/size';
 
 const startScreen = (props) => {
   const {navigation, geoLocation} = props;
@@ -26,7 +26,7 @@ const startScreen = (props) => {
   const filterState = useSelector((state) => state.filter);
   const cards = useSelector(({fireStore: {ordered}}) => ordered.Cards);
   const auth = useSelector((state) => state.firebase.auth);
-  const firestore = useSelector((state) => state.firestore);
+  const theme = useSelector((state) => state.theme.theme);
   let snapPosition = size.height < 550 ? 50 : 100;
 
 
@@ -71,25 +71,30 @@ const startScreen = (props) => {
   return (
     <View style={styles.contain}>
       <View style={{flexDirection: 'row'}}>
-        <Text style={{fontSize: 25, fontFamily: 'Spartan', marginRight: 10}}>
+        <Text style={{
+          fontSize: 25,
+         fontFamily: 'Spartan',
+          marginRight: 10,
+          color:theme.colors.text
+          }}>
           Welcome Back
         </Text>
-        <Text style={{fontSize: 25, fontFamily: 'SpartanBold'}}>
+        <Text style={{fontSize: 25, fontFamily: 'SpartanBold', color:theme.colors.text}}>
           {state.displayName ? state.displayName : state.username} !
         </Text>
       </View>
 
-      <Cart width={size.height < 550 ? '250' : '300'} height="250" />
+      <Cart width={size.height < 550 ? '250' : '300'} height="250" style={{color:theme.colors.text }}/>
       <TouchableOpacity onPress={navigateToCreate}>
         <View style={styles.button}>
-          <FontAwesome5 name="wallet" size={40} color="black" />
+          <FontAwesome5 name="wallet" size={40} color={theme.colors.text }/>
           {/* <Icon name="wallet-plus" size={24} color="black" /> */}
-          <Text style={styles.title}>Buy</Text>
+          <Text style={{...styles.title,color:theme.colors.text }}>Buy</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => props.navigation.navigate('list')}>
         {/* <Icon name="swap-horizontal-circle" size={24} color="black" /> */}
-        <Fontisto name="arrow-swap" size={24} color="black" />
+        <Fontisto name="arrow-swap" size={24} color={theme.colors.text } />
       </TouchableOpacity>
 
       <BottomSheet

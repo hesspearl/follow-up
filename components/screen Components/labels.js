@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import size from "../../size"
+import size from "../../styles/size"
 
 const high = "high";
 const low = "low";
